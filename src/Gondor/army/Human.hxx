@@ -6,7 +6,7 @@
 #define RTS_HUMAN_HXX
 
 #include <map>
-#include "../main/SimpleUnit.hxx"
+#include "../../main/SimpleUnit.hxx"
 
 class Human
     : public SimpleUnit

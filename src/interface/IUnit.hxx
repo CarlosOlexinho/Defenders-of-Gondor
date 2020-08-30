@@ -5,6 +5,7 @@
 #ifndef RTS_IUNIT_HXX
 #define RTS_IUNIT_HXX
 #include <string>
+#include "IBuilding.hxx"
 
 struct IUnit
 {

@@ -6,20 +6,21 @@
 #define RTS_KNIGHT_HXX
 
 #include "../Human.hxx"
+#include <string>
 
 class Knight
-    : public Human
-    {
-        public:
-        Knight(double maxHealth
-                , double damage
-                , double penetration
-                , DamageType damageType);
+        : public Human
+{
+public:
+    Knight(double maxHealth
+            , double damage
+            , double penetration
+            , DamageType damageType);
 
-        double getDamage() override;
-        std::string toString() override;
-        std::string victorySpeech();
-        std::string defeatSpeech();
-    };
+    double getDamage() override;
+    std::string toString() override;
+    std::string victorySpeech();
+    std::string defeatSpeech();
+};
 
 #endif //RTS_KNIGHT_HXX
