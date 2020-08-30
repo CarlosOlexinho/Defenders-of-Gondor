@@ -8,6 +8,7 @@
 #include <string>
 #include <map>
 #include "../interface/IUnit.hxx"
+#include "../interface/IBuilding.hxx"
 
 class SimpleUnit
         : public IUnit
