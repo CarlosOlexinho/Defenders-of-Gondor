@@ -11,12 +11,12 @@ Engineer::Engineer (double maxHealth, double damage, double penetration, IUnit::
         penetration,
         damageType,
         {
-                {Engineer::PhysicalDamage, 10.f},
-                {Engineer::FireDamage, 15.f}
+                {Engineer::MeleeDamage, 10.f}
         },
         {
-                {Engineer::PhysicalDamage, 1.f},
-                {Engineer::FireDamage, 1.f}
+                {Engineer::MeleeDamage, 1.f},
+                {Engineer::FireDamage, 1.f},
+                {Engineer::PiercingDamage, 1.f}
         })
 
 {

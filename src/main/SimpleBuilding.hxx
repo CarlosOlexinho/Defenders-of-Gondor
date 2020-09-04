@@ -13,17 +13,18 @@ class SimpleBuilding
         : public IBuilding
 {
 protected:
-    double duration;
+    double gold;
+    double durability;
     double damage;
     double penetration;
-    buildingDamageType damageType;
+    buildingDamageType buildingDamageType;
 
     std::map<buildingDamageType, double> resistanceMapping;
 
 public:
 
 
-    SimpleBuilding(double duration
+    SimpleBuilding(double durability
             , double damage
             , double penetration
             , buildingDamageType damageType
@@ -33,7 +34,7 @@ public:
     double getDamage() override;
     double getPenetration() override;
     buildingDamageType getDamageType() override;
-    double getDuration() override;
+    double getDurability() override;
     double getGold() override;
 
     std::string toString() override;

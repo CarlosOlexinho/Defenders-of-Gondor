@@ -11,11 +11,14 @@ Archer::Archer(double maxHealth, double Damage, double Penetration, IUnit::Damag
         penetration,
         damageType,
         {
-                {Archer::PhysicalDamage, 10.f},
-                {Archer::FireDamage,     15.f}
+                {Archer::MeleeDamage, 5.f},
+                {Archer::FireDamage,     15.f},
+                {Archer::PiercingDamage, 10.f}
         }, {
-                {Archer::PhysicalDamage, 1.f},
-                {Archer::FireDamage,     1.f}
+                {Archer::MeleeDamage, 2.f},
+                {Archer::FireDamage,     2.f},
+                {Archer::PiercingDamage, 2.f},
+                {Archer::ChargeDamage, 2.f}
         })
 {
 

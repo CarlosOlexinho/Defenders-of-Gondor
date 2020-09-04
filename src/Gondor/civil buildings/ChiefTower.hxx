@@ -5,7 +5,7 @@
 #ifndef RTS_CHIEFTOWER_HXX
 #define RTS_CHIEFTOWER_HXX
 
-#include ""
+#include "../../main/SimpleBuilding.hxx"
 
 class ChiefTower {
 

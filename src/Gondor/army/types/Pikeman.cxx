@@ -11,11 +11,13 @@ Pikeman::Pikeman (double maxHealth, double damage, double penetration, IUnit::Da
         penetration,
         damageType,
         {
-                {Pikeman::PhysicalDamage, 10.f},
+                {Pikeman::MeleeDamage, 10.f},
                 {Pikeman::FireDamage, 15.f}
         },{
-                {Pikeman::PhysicalDamage, 1.f},
-                {Pikeman::FireDamage, 1.f}
+                {Pikeman::MeleeDamage, 1.f},
+                {Pikeman::FireDamage, 1.f},
+                {Pikeman::PiercingDamage, 1.f},
+                {Pikeman::ChargeDamage, 1.f}
         })
 
 {

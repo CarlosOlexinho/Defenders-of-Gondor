@@ -11,11 +11,13 @@ Knight::Knight(double maxHealth, double Damage, double Penetration, IUnit::Damag
         penetration,
         damageType,
         {
-                {Knight::PhysicalDamage, 10.f},
-                {Knight::FireDamage,     15.f}
+                {Knight::MeleeDamage, 10.f},
+                {Knight::ChargeDamage, 20.f}
         }, {
-                {Knight::PhysicalDamage, 1.f},
-                {Knight::FireDamage,     1.f}
+                {Knight::MeleeDamage, 1.f},
+                {Knight::FireDamage,     1.f},
+                {Knight::PiercingDamage, 1.f},
+                {Knight::ChargeDamage, 1.f}
         })
 {
 

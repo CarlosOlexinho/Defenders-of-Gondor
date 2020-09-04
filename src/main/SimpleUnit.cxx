@@ -24,6 +24,8 @@ void SimpleUnit::takeDamage(double enemyDamage, double enemyPenetration, IUnit::
     health -= enemyDamage * (1 - (resistanceMapping[attackDamageType] - enemyPenetration));
     std::cout << toString() << " has " << health << " health" << std::endl;
 }
+
+
 double SimpleUnit::getDamage()
 {
     return this->damage;

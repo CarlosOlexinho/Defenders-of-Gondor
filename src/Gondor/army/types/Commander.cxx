@@ -11,11 +11,11 @@ Commander::Commander(double maxHealth, double Damage, double Penetration, IUnit:
         penetration,
         damageType,
         {
-                {Commander::PhysicalDamage, 15.f},
+                {Commander::MeleeDamage, 15.f},
                 {Commander::FireDamage, 15.f}
         },
         {
-                {Commander::PhysicalDamage, 1.f},
+                {Commander::MeleeDamage, 1.f},
                 {Commander::FireDamage, 1.f}
         })
 

@@ -11,8 +11,11 @@ struct IUnit
 {
     enum DamageType
     {
-        PhysicalDamage,
+        MeleeDamage,
         FireDamage,
+        PiercingDamage,
+        ChargeDamage,
+
     };
 
     virtual ~IUnit() = default;

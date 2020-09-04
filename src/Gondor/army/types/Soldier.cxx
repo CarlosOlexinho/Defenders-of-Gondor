@@ -11,11 +11,13 @@ Soldier::Soldier (double maxHealth, double damage, double penetration, IUnit::Da
         penetration,
         damageType,
         {
-                {Soldier::PhysicalDamage, 10.f},
+                {Soldier::MeleeDamage, 10.f},
                 {Soldier::FireDamage, 15.f}
         },{
-                {Soldier::PhysicalDamage, 1.f},
-                {Soldier::FireDamage, 1.f}
+                {Soldier::MeleeDamage, 1.f},
+                {Soldier::FireDamage, 1.f},
+                {Soldier::PiercingDamage, 1.f},
+                {Soldier::ChargeDamage, 1.f}
         })
 
 {

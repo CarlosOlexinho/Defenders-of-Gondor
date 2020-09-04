@@ -8,10 +8,10 @@
 SimpleBuilding::SimpleBuilding(double maxDuration
         , double damage
         , double penetration
-        , IBuilding::buildingDamageType damageType
+        , IBuilding::buildingDamageType buildingDamageType
         , std::map<buildingDamageType, double> resistanceMapping)
 {
-    this->duration = maxDuration;
+    this->durability = maxDurability;
     this->damage = damage;
     this->penetration = penetration;
     this->damageType = damageType;
@@ -21,6 +21,30 @@ SimpleBuilding::SimpleBuilding(double maxDuration
 void SimpleBuilding::takeDamage(double enemyDamage, double enemyPenetration, IUnit::DamageType attackDamageType)
 {
     std::cout << toString() << ", has received " << enemyDamage << " damage!" << std::endl;
-    duration -= enemyDamage * (1-(resistanceMapping[attackDamageType] - enemyPenetration));
-    std::cout << toString() << " has " << duration << " duration" << std::endl;
+    durability -= enemyDamage * (1-(resistanceMapping[attackDamageType] - enemyPenetration));
+    std::cout << toString() << " has " << durability << " duration" << std::endl;
+}
+double SimpleBuilding::getDamage()
+{
+    return this -> damage;
+}
+double SimpleBuilding::getPenetration()
+{
+    return this -> penetration;
+}
+IBuilding::buildingDamageType SimpleBuilding::getBuildingDamageType()
+{
+    return this -> damageType;
+}
+double SimpleBuilding::getDurability()
+{
+    return this -> durability;
+}
+std::string SimpleBuilding::toString()
+{
+    return "SimpleBuilding";
+}
+double SimpleBuilding::getGold()
+{
+    return this -> gold;
 }
