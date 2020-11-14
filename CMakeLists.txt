@@ -3,4 +3,6 @@ project(RTS)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(RTS main.cpp src/interface/IUnit.hxx src/army/types/Soldier.cxx src/army/types/Soldier.hxx src/army/types/Archer.cxx src/army/types/Archer.hxx src/army/types/Knight.cxx src/army/types/Knight.hxx src/army/types/Commander.cxx src/army/types/Commander.hxx src/army/types/Pikeman.cxx src/army/types/Pikeman.hxx src/army/types/Engineer.cxx src/army/types/Engineer.hxx src/main/SimpleUnit.cxx src/main/SimpleUnit.hxx src/army/Human.cxx src/army/Human.hxx "src/military buildings/Barracs.cxx" "src/military buildings/Barracs.hxx" "src/military buildings/ArcherySchool.cxx" "src/military buildings/ArcherySchool.hxx" "src/military buildings/Stables.cxx" "src/military buildings/Stables.hxx" "src/military buildings/Workshop.cxx" "src/military buildings/Workshop.hxx" "src/civil buildings/ChiefTower.cxx" "src/civil buildings/ChiefTower.hxx" "src/civil buildings/TimberMenCamp.cxx" "src/civil buildings/TimberMenCamp.hxx" "src/civil buildings/Farm.cxx" "src/civil buildings/Farm.hxx" "src/civil buildings/Mine.cxx" "src/civil buildings/Mine.hxx" "src/civil buildings/Quarry.cxx" "src/civil buildings/Quarry.hxx" "src/civil buildings/Market.cxx" "src/civil buildings/Market.hxx" "src/civil buildings/Forge.cxx" "src/civil buildings/Forge.hxx" src/interface/IBuilding.hxx src/main/SimpleBuilding.cxx src/main/SimpleBuilding.hxx src/Buildings/Building.cxx src/Buildings/Building.hxx)
+add_executable(RTS 
+            src/main.cpp 
+    )
