@@ -38,14 +38,14 @@ namespace ormaniec
             static_cast<sf::CircleShape*>(drawable.get())->setPosition({20, 20});
         }
 
-        // sf::Event event;
-        // while(renderWindow.pollEvent(event))
-        // {
-        //     if(event.type == sf::Event::Closed)
-        //     {
-        //         renderWindow.close();
-        //     }
-        // }
+        sf::Event event;
+        while(renderWindow.pollEvent(event))
+        {
+            if(event.type == sf::Event::Closed)
+            {
+                renderWindow.close();
+            }
+        }
 
         renderWindow.clear();
         renderWindow.draw(*drawable);
