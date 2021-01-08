@@ -6,11 +6,21 @@
  */
 #pragma once
 
+#include "event/IEventHandler.hpp"
+
+#include <map>
+#include <memory>
+
 namespace ormaniec
 {
     class EventHandler
     {
+    public:
+        bool receive(sf::Event& event);
+        void registerEventHandler(sf::Event::EventType, const std::shared_ptr<IEventHandler>&);
 
+    private:
+        std::map< sf::Event::EventType , std::shared_ptr<IEventHandler> > eventHandlerMap;
     };
 }
 

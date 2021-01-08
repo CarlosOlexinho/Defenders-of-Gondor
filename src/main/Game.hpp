@@ -6,6 +6,8 @@
  */
 #pragma once
 
+#include "handler/EventHandler.hpp"
+
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -22,6 +24,7 @@ namespace ormaniec
 
     private:
         sf::RenderWindow renderWindow;
+        EventHandler eventHandler;
     };
 }
 

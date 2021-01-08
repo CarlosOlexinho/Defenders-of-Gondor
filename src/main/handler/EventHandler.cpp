@@ -10,4 +10,17 @@
 namespace ormaniec
 {
 
+    bool EventHandler::receive(sf::Event& event)
+    {
+        if( eventHandlerMap.contains(event.type) )
+        {
+            eventHandlerMap[event.type]->handle(event);
+            return true;
+        }
+        return false;
+    }
+    void EventHandler::registerEventHandler(sf::Event::EventType type, const std::shared_ptr<IEventHandler>& handlerPtr)
+    {
+        eventHandlerMap.emplace( type, handlerPtr);
+    }
 }

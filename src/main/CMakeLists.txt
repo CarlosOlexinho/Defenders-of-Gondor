@@ -1,9 +1,10 @@
-add_executable(RTS
+add_executable( RTS
     ./main.cpp
     ./Game.cpp
     ./handler/EventHandler.cpp
-    ./event/input/KeyboardEvent.cpp
-    ./event/input/MouseEvent.cpp
+    ./handler/event/input/KeyboardEventHandler.cpp
+    ./handler/event/input/MouseEventHandler.cpp
     )
 
-target_link_libraries(RTS sfml-graphics sfml-audio pthread)
+target_include_directories( RTS PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} )
+target_link_libraries( RTS sfml-graphics sfml-audio pthread )
