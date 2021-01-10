@@ -10,6 +10,8 @@
 
 #include <handler/event/input/KeyboardEventHandler.hpp>
 #include <handler/event/input/MouseEventHandler.hpp>
+#include <handler/event/input/CloseEventHandler.hpp>
+#include <handler/event/input/FocusEventHandler.hpp>
 
 #include "Game.hpp"
 
@@ -20,10 +22,16 @@ namespace ormaniec
     {
         std::shared_ptr<KeyboardEventHandler> keyboardHandler{new KeyboardEventHandler};
         std::shared_ptr<MouseEventHandler> mouseHandler{new MouseEventHandler};
+        std::shared_ptr<carlos::CloseEventHandler> closeHandler{new carlos::CloseEventHandler(renderWindow)};
+        std::shared_ptr<carlos::FocusEventHandler> focusHandler{new carlos::FocusEventHandler(focusHandler)};
 
         eventHandler.registerEventHandler(sf::Event::EventType::KeyPressed, keyboardHandler);
         eventHandler.registerEventHandler(sf::Event::EventType::KeyReleased, keyboardHandler);
         eventHandler.registerEventHandler(sf::Event::EventType::MouseButtonPressed, mouseHandler);
+        eventHandler.registerEventHandler(sf::Event::EventType::MouseButtonReleased, mouseHandler);
+        eventHandler.registerEventHandler(sf::Event::EventType::Closed, closeHandler);
+        eventHandler.registerEventHandler(sf::Event::EventType::GainedFocus, focusHandler);
+        eventHandler.registerEventHandler(sf::Event::EventType::LostFocus, focusHandler);
     }
 
     void Game::start()
@@ -58,9 +66,12 @@ namespace ormaniec
             eventHandler.receive(event);
         }
 
+    
         renderWindow.clear();
         renderWindow.draw(*drawable);
         renderWindow.display();
     }
+
+
 
 }
