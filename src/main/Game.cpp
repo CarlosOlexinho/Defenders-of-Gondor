@@ -23,7 +23,7 @@ namespace ormaniec
         std::shared_ptr<KeyboardEventHandler> keyboardHandler{new KeyboardEventHandler};
         std::shared_ptr<MouseEventHandler> mouseHandler{new MouseEventHandler};
         std::shared_ptr<carlos::CloseEventHandler> closeHandler{new carlos::CloseEventHandler(renderWindow)};
-        std::shared_ptr<carlos::FocusEventHandler> focusHandler{new carlos::FocusEventHandler(focusHandler)};
+        std::shared_ptr<carlos::FocusEventHandler> focusHandler{new carlos::FocusEventHandler()};
 
         eventHandler.registerEventHandler(sf::Event::EventType::KeyPressed, keyboardHandler);
         eventHandler.registerEventHandler(sf::Event::EventType::KeyReleased, keyboardHandler);
