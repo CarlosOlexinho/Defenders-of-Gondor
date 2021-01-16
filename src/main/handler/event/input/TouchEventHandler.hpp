@@ -4,12 +4,12 @@
 
 namespace carlos
 {
-    class FocusEventHandler
+    class TouchEventHandler
         : public ormaniec::IEventHandler
     {
         public:
 
-            FocusEventHandler(sf::RenderWindow&);
+            TouchEventHandler(sf::RenderWindow& window);
             void handle(sf::Event& event) override;
             sf::RenderWindow& window;
     };
