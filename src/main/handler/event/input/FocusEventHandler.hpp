@@ -8,9 +8,6 @@ namespace carlos
         : public ormaniec::IEventHandler
     {
         public:
-
-            FocusEventHandler(sf::RenderWindow&);
             void handle(sf::Event& event) override;
-            sf::RenderWindow& window;
     };
 }

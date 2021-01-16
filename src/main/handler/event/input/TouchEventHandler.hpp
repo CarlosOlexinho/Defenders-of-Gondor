@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Config.hpp>
 #include <handler/event/IEventHandler.hpp>
 
 namespace carlos
@@ -8,10 +9,6 @@ namespace carlos
         : public ormaniec::IEventHandler
     {
         public:
-
-            TouchEventHandler(sf::RenderWindow& window);
             void handle(sf::Event& event) override;
-            sf::RenderWindow& window;
-            
     };
 }

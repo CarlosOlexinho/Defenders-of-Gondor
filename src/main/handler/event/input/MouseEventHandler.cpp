@@ -33,7 +33,7 @@ namespace ormaniec
         }
         else if ( event.type == sf::Event::MouseWheelMoved)
         {
-            std::cout << "Wheel scrolled" << event.mouseWheel.delta << std::endl;
+            std::cout << "Wheel scrolled [" << event.mouseWheel.delta << "]" << std::endl;
         }
     }
 }

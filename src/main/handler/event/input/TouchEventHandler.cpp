@@ -3,20 +3,20 @@
 
 namespace carlos
 {
-   TouchEventHandler::TouchEventHandler(sf::RenderWindow& window)
-    : window(window)
-    {
-
-    }
     void TouchEventHandler::handle(sf::Event& event)
-    {
-        unsigned int finger;
-        int x;
-        int y;
+    {   
+      if ( event.type == sf::Event::TouchBegan)
+        {
+           std::cout << "You've touched the touchpad!" << event.TouchBegan << std::endl;
+        }
+      else if ( event.type == sf::Event::TouchMoved)
+        {
+           std::cout << "You've made a move on the touchpad!" << event.TouchMoved << std::endl;
+        }
+      else if ( event.type == sf::Event::TouchEnded)
+        {
+            std::cout << "You've ended touching the touchpad!" << event.TouchEnded << std::endl;
+        }
     }
-     
-        //TouchBegan
-        //TouchMoved
-        //TouchEnded
 
 }
