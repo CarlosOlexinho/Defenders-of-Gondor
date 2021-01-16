@@ -8,13 +8,15 @@ namespace carlos
     {
 
     }
-void TouchEventHandler::handle(sf::Event& event)
-{
-    usingned int finger;
-    int x;
-    int y;
-}
-
+    void TouchEventHandler::handle(sf::Event& event)
+    {
+        unsigned int finger;
+        int x;
+        int y;
+    }
      
+        //TouchBegan
+        //TouchMoved
+        //TouchEnded
 
 }

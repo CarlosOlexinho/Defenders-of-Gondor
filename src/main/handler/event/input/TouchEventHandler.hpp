@@ -12,5 +12,6 @@ namespace carlos
             TouchEventHandler(sf::RenderWindow& window);
             void handle(sf::Event& event) override;
             sf::RenderWindow& window;
+            
     };
 }

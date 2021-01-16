@@ -22,5 +22,18 @@ namespace ormaniec
         {
             std::cout << "Mouse button with id[" << event.key.code << "] released." << std::endl;
         }
+       
+        else if ( event.type == sf::Event::MouseEntered )
+        {
+            std::cout << "You are at the window!" << std::endl;
+        }   
+        else if ( event.type == sf::Event::MouseLeft ) 
+        {
+            std::cout << "You are beyond the window!" << std::endl;
+        }
+        else if ( event.type == sf::Event::MouseWheelMoved)
+        {
+            std::cout << "Wheel scrolled" << event.mouseWheel.delta << std::endl;
+        }
     }
 }
