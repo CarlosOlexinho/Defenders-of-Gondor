@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <handler/event/IEventHandler.hpp>
+#include "IEventHandler.hpp"
 
 namespace carlos
 {
