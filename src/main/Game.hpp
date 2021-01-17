@@ -2,14 +2,15 @@
 // Created by ormaniec on 08.01.2021.
 //
 /**
- * @file Game.hpp.h
+ * @file Game.hpp
  */
 #pragma once
 
-#include "window/input/WindowEventHandler.hpp"
+#include "window/event/handler/EventHandlerStorage.hpp"
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <logic/event/handler/input/UserInputMapper.hpp>
 
 namespace ormaniec
 {
@@ -25,7 +26,8 @@ namespace ormaniec
 
     private:
         sf::RenderWindow renderWindow;
-        WindowEventHandler windowEventHandler;
+        std::unique_ptr<UserInputMapper> userInputMapper;
+        EventHandlerStorage windowEventHandler;
     };
 }
 

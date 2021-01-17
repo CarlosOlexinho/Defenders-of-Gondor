@@ -2,18 +2,18 @@
 // Created by ormaniec on 08.01.2021.
 //
 /**
- * @file WindowEventHandler.hpp.h
+ * @file EventHandlerStorage.hpp
  */
 #pragma once
 
-#include "event/IEventHandler.hpp"
+#include <window/event/handler/IEventHandler.hpp>
 
 #include <map>
 #include <memory>
 
 namespace ormaniec
 {
-    class WindowEventHandler
+    class EventHandlerStorage
     {
     public:
         bool receive(sf::Event& event);

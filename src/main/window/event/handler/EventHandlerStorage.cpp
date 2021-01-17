@@ -2,15 +2,15 @@
 // Created by ormaniec on 08.01.2021.
 //
 /**
- * @file WindowEventHandler.cpp.cc
+ * @file EventHandlerStorage.cpp
  */
 
-#include "WindowEventHandler.hpp"
+#include "EventHandlerStorage.hpp"
 
 namespace ormaniec
 {
 
-    bool WindowEventHandler::receive(sf::Event& event)
+    bool EventHandlerStorage::receive(sf::Event& event)
     {
         if( eventHandlerMap.contains(event.type) )
         {
@@ -19,7 +19,7 @@ namespace ormaniec
         }
         return false;
     }
-    void WindowEventHandler::registerEventHandler(sf::Event::EventType type, const std::shared_ptr<IEventHandler>& handlerPtr)
+    void EventHandlerStorage::registerEventHandler(sf::Event::EventType type, const std::shared_ptr<IEventHandler>& handlerPtr)
     {
         eventHandlerMap.emplace( type, handlerPtr);
     }

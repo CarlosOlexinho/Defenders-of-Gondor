@@ -1,11 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <SFML/Config.hpp>
-#include "IEventHandler.hpp"
+#include <window/event/handler/IEventHandler.hpp>
 
 namespace carlos
 {
-    class TouchEventHandler
+    class FocusEventHandler
         : public ormaniec::IEventHandler
     {
         public:

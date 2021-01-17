@@ -6,7 +6,10 @@
  */
 #pragma once
 
-#include "IEventHandler.hpp"
+#include <window/event/handler/IEventHandler.hpp>
+
+#include <map>
+#include <memory>
 
 namespace ormaniec
 {
@@ -15,6 +18,10 @@ namespace ormaniec
     {
     public:
         void handle(sf::Event& event) override;
+        void registerAction(unsigned int id, std::function<void()> action) override;
+
+    private:
+        std::map<sf::Keyboard::Key, std::function<void()>> actionMapping;
     };
 }
 

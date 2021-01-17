@@ -7,12 +7,14 @@
 #pragma once
 
 #include <SFML/Window/Event.hpp>
+#include <memory>
 
 namespace ormaniec
 {
     struct IEventHandler
     {
         virtual void handle( sf::Event& event ) = 0;
+        virtual void registerAction(unsigned int id, std::function<void()> action) {};
 
         virtual ~IEventHandler() = default;
     };

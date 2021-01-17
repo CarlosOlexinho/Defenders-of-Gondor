@@ -6,7 +6,7 @@
  */
 #pragma once
 
-#include "IEventHandler.hpp"
+#include <window/event/handler/IEventHandler.hpp>
 
 namespace ormaniec
 {
