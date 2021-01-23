@@ -14,6 +14,8 @@ namespace ormaniec
     {
         mouseEventHandler->registerAction(i,function);
     }
-    MouseInputMapper::MouseInputMapper(std::shared_ptr<IEventHandler>  mouseEventHandler)
-        : mouseEventHandler(std::move(mouseEventHandler)) { }
+    MouseInputMapper::MouseInputMapper(WindowEventManager& windowEventManager)
+    {
+        windowEventManager.subscribe(sf::Event::MouseButtonPressed, [](sf::Event& event){});
+    }
 }

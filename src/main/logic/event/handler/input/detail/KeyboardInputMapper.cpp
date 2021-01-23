@@ -8,13 +8,25 @@
 #include "KeyboardInputMapper.hpp"
 
 #include <utility>
+#include <iostream>
 
 namespace ormaniec
 {
-    void KeyboardInputMapper::registerMapping(unsigned int i, std::function<void()> func)
+    KeyboardInputMapper::KeyboardInputMapper(WindowEventManager& windowEventManager)
     {
-        keyboardEventHandler->registerAction(i,func);
+        windowEventManager.subscribe(sf::Event::KeyPressed, [&](sf::Event& event) { handle(event); });
     }
-    KeyboardInputMapper::KeyboardInputMapper(std::shared_ptr<IEventHandler>  keyboardEventHandler)
-        : keyboardEventHandler(std::move(keyboardEventHandler)) { }
+
+    void KeyboardInputMapper::registerMapping(unsigned int keyCode, std::function<void()> func)
+    {
+        actionMap.insert({static_cast<sf::Keyboard::Key>(keyCode), func});
+    }
+    void KeyboardInputMapper::handle(sf::Event& event)
+    {
+        auto& keyCode = event.key.code;
+        if(actionMap.contains(keyCode))
+        {
+            actionMap[keyCode]();
+        }
+    }
 }

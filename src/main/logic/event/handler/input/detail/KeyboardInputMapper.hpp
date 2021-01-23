@@ -9,6 +9,7 @@
 #include <logic/event/handler/input/IInputMapper.hpp>
 #include <memory>
 #include <window/event/handler/IEventHandler.hpp>
+#include <window/event/handler/WindowEventManager.hpp>
 
 namespace ormaniec
 {
@@ -16,11 +17,14 @@ namespace ormaniec
         : public IInputMapper
     {
     public:
-        KeyboardInputMapper(std::shared_ptr<IEventHandler>  keyboardEventHandler);
-        void registerMapping(unsigned int i, std::function<void()> func) override;
+        explicit KeyboardInputMapper(WindowEventManager& windowEventManager);
+        void registerMapping(unsigned int keyCode, std::function<void()> func) override;
 
     private:
-        std::shared_ptr<IEventHandler> keyboardEventHandler;
+        void handle(sf::Event& event);
+
+    private:
+        std::map<sf::Keyboard::Key, std::function<void()>> actionMap;
     };
 }
 

@@ -6,7 +6,7 @@
  */
 #pragma once
 
-#include "window/event/handler/EventHandlerStorage.hpp"
+#include "window/event/handler/WindowEventManager.hpp"
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
@@ -25,9 +25,9 @@ namespace ormaniec
         void gameLoop();
 
     private:
-        sf::RenderWindow renderWindow;
-        std::unique_ptr<UserInputMapper> userInputMapper;
-        EventHandlerStorage windowEventHandler;
+        sf::RenderWindow                    renderWindow;
+        std::unique_ptr<UserInputMapper>    userInputMapperPtr;
+        std::unique_ptr<WindowEventManager> windowEventManagerPtr;
     };
 }
 

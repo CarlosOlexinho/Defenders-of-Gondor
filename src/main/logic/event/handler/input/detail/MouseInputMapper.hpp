@@ -6,9 +6,10 @@
  */
 #pragma once
 
-#include <logic/event/handler/input/IInputMapper.hpp>
 #include <memory>
-#include <window/event/handler/IEventHandler.hpp>
+
+#include <logic/event/handler/input/IInputMapper.hpp>
+#include <window/event/handler/WindowEventManager.hpp>
 
 namespace ormaniec
 {
@@ -16,7 +17,7 @@ namespace ormaniec
         : public IInputMapper
     {
     public:
-        MouseInputMapper(std::shared_ptr<IEventHandler>  keyboardEventHandler);
+        explicit MouseInputMapper(WindowEventManager& windowEventManager);
         void registerMapping(unsigned int i, std::function<void()> function) override;
 
     private:

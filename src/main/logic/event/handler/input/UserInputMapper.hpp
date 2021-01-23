@@ -6,6 +6,7 @@
  */
 #pragma once
 
+#include <window/event/handler/WindowEventManager.hpp>
 #include "IInputMapper.hpp"
 
 #include <memory>
@@ -16,12 +17,11 @@ namespace ormaniec
     {
         IInputMapper& getKeyboardMapper();
         IInputMapper& getMouseMapper();
+        IInputMapper& getCloseMapper();
 
-        UserInputMapper(
-            std::shared_ptr<IEventHandler> keyboardEventHandler,
-            std::shared_ptr<IEventHandler> mouseEventHandler
-        );
+        explicit UserInputMapper(WindowEventManager& windowEventManager);
     private:
+        std::unique_ptr<IInputMapper> closeMapper;
         std::unique_ptr<IInputMapper> keyboardMapper;
         std::unique_ptr<IInputMapper> mouseMapper;
     };

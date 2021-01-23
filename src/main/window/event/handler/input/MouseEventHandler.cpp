@@ -25,11 +25,11 @@ namespace ormaniec
        
         else if ( event.type == sf::Event::MouseEntered )
         {
-            std::cout << "You are at the window!" << std::endl;
+            std::cout << "You are at the windowEventManager!" << std::endl;
         }   
         else if ( event.type == sf::Event::MouseLeft ) 
         {
-            std::cout << "You are beyond the window!" << std::endl;
+            std::cout << "You are beyond the windowEventManager!" << std::endl;
         }
         else if ( event.type == sf::Event::MouseWheelMoved)
         {
