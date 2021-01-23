@@ -29,8 +29,7 @@ namespace ormaniec
         windowEventHandler.registerEventHandler(sf::Event::KeyPressed, keyboardEventHandler);
         windowEventHandler.registerEventHandler(sf::Event::MouseButtonPressed, mouseEventHandler);
 
-        userInputMapper = std::make_unique<UserInputMapper>(keyboardEventHandler);
-        userInputMapper = std::make_unique<UserInputMapper>(mouseEventHandler);
+        userInputMapper = std::make_unique<UserInputMapper>(keyboardEventHandler,mouseEventHandler);
 
         userInputMapper->getKeyboardMapper().registerMapping(sf::Keyboard::D, []{ std::cout << "Button D has been pressed!" << std::endl; });
         userInputMapper->getKeyboardMapper().registerMapping(sf::Keyboard::W, []{ std::cout << "Button W has been pressed!" << std::endl; });
@@ -45,7 +44,7 @@ namespace ormaniec
         userInputMapper->getKeyboardMapper().registerMapping(sf::Keyboard::Numpad2, []{ std::cout << "Button 2 on Numpad has been pressed!" << std::endl; });
         userInputMapper->getKeyboardMapper().registerMapping(sf::Keyboard::Numpad4, []{ std::cout << "Button 4 on Numpad has been pressed!" << std::endl; });
         userInputMapper->getKeyboardMapper().registerMapping(sf::Keyboard::Numpad6, []{ std::cout << "Button 6 on Numpad has been pressed!" << std::endl; });
-        
+
 
         userInputMapper->getMouseMapper().registerMapping(sf::Mouse::Left, [] {std::cout << "Left Mouse button has been pressed!" << std::endl; });
         userInputMapper->getMouseMapper().registerMapping(sf::Mouse::Middle, [] {std::cout << "Middle Mouse button has been pressed!" << std::endl; });

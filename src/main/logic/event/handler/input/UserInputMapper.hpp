@@ -17,7 +17,10 @@ namespace ormaniec
         IInputMapper& getKeyboardMapper();
         IInputMapper& getMouseMapper();
 
-        explicit UserInputMapper(std::shared_ptr<IEventHandler> keyboardEventHandler);
+        UserInputMapper(
+            std::shared_ptr<IEventHandler> keyboardEventHandler,
+            std::shared_ptr<IEventHandler> mouseEventHandler
+        );
     private:
         std::unique_ptr<IInputMapper> keyboardMapper;
         std::unique_ptr<IInputMapper> mouseMapper;

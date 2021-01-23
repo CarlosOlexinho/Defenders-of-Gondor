@@ -14,16 +14,14 @@ namespace ormaniec
 {
 
     IInputMapper& UserInputMapper::getKeyboardMapper() { return *keyboardMapper; }
-    UserInputMapper::UserInputMapper(std::shared_ptr<IEventHandler> keyboardEventHandler)
-        : keyboardMapper(new KeyboardInputMapper(keyboardEventHandler))
-    {
 
-    }
+    UserInputMapper::UserInputMapper(
+        std::shared_ptr<IEventHandler> keyboardEventHandler,
+        std::shared_ptr<IEventHandler> mouseEventHandler
+    )
+        : keyboardMapper(new KeyboardInputMapper(keyboardEventHandler)),
+          mouseMapper(new MouseInputMapper(mouseEventHandler)) { }
+
     IInputMapper& UserInputMapper::getMouseMapper() { return *mouseMapper; }
-    UserInputMapper::UserInputMapper(std::shared_ptr<IEventHandler> mouseEventHandler)
-        : mouseMapper(new MouseInputMapper(mouseEventHandler))
-        {
-            
-        }
 
 }

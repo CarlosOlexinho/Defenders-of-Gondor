@@ -16,9 +16,10 @@ namespace ormaniec
         : public IInputMapper
     {
     public:
+        MouseInputMapper(std::shared_ptr<IEventHandler>  keyboardEventHandler);
         void registerMapping(unsigned int i, std::function<void()> function) override;
 
-        private:
+    private:
         std::shared_ptr<IEventHandler> mouseEventHandler;
     };
 }
