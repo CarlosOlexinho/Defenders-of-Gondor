@@ -15,12 +15,12 @@ namespace ormaniec
     struct UserInputMapper
     {
         IInputMapper& getKeyboardMapper();
-        // IInputMapper& getMouseMapper();
+        IInputMapper& getMouseMapper();
 
         explicit UserInputMapper(std::shared_ptr<IEventHandler> keyboardEventHandler);
     private:
         std::unique_ptr<IInputMapper> keyboardMapper;
-        // std::unique_ptr<IInputMapper> mouseMapper;
+        std::unique_ptr<IInputMapper> mouseMapper;
     };
 }
 

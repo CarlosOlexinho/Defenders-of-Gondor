@@ -7,6 +7,8 @@
 #pragma once
 
 #include <logic/event/handler/input/IInputMapper.hpp>
+#include <memory>
+#include <window/event/handler/IEventHandler.hpp>
 
 namespace ormaniec
 {
@@ -15,6 +17,9 @@ namespace ormaniec
     {
     public:
         void registerMapping(unsigned int i, std::function<void()> function) override;
+
+        private:
+        std::shared_ptr<IEventHandler> mouseEventHandler;
     };
 }
 
