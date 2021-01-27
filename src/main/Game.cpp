@@ -8,11 +8,6 @@
 #include <thread>
 #include <iostream>
 
-#include "window/event/handler/input/KeyboardEventHandler.hpp"
-#include "window/event/handler/input/MouseEventHandler.hpp"
-#include "window/event/handler/input/CloseEventHandler.hpp"
-#include "window/event/handler/input/FocusEventHandler.hpp"
-#include "window/event/handler/input/TouchEventHandler.hpp"
 
 #include "Game.hpp"
 
@@ -25,6 +20,12 @@ namespace ormaniec
         userInputMapperPtr = std::make_unique<UserInputMapper>(*windowEventManagerPtr);
 
         userInputMapperPtr->getKeyboardMapper().registerMapping(sf::Keyboard::D, []{ std::cout << "You are pressing D." << std::endl; });
+        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Right, []{ std::cout << "Yes, that's right. You've pressed right mouse button." << std::endl; });
+        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Middle, []{ std::cout << "Yes, that's right. You've pressed middle mouse button." << std::endl; });
+        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Left, []{ std::cout << "Yes, that's right. You've pressed left mouse button." << std::endl; });
+        
+        userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::GainedFocus, [] {std::cout << "Gained focus!" << std:: endl; });
+        
         userInputMapperPtr->getCloseMapper().registerMapping(0, []
         {
             std::cout << "Thank you very much for using our application!" << std::endl;

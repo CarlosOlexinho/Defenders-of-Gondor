@@ -6,11 +6,9 @@
  */
 #pragma once
 
-#include <window/event/handler/IEventHandler.hpp>
-
 #include <map>
 #include <memory>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics.hpp>
 
 namespace ormaniec
 {

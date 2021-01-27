@@ -18,12 +18,15 @@ namespace ormaniec
         IInputMapper& getKeyboardMapper();
         IInputMapper& getMouseMapper();
         IInputMapper& getCloseMapper();
+        IInputMapper& getFocusMapper();
+    
 
         explicit UserInputMapper(WindowEventManager& windowEventManager);
     private:
         std::unique_ptr<IInputMapper> closeMapper;
         std::unique_ptr<IInputMapper> keyboardMapper;
         std::unique_ptr<IInputMapper> mouseMapper;
+        std::unique_ptr<IInputMapper> focusMapper;
     };
 }
 

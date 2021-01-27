@@ -8,6 +8,7 @@
 #include <logic/event/handler/input/detail/CloseInputMapper.hpp>
 #include "detail/KeyboardInputMapper.hpp"
 #include "detail/MouseInputMapper.hpp"
+#include "detail/FocusInputMapper.hpp"
 
 #include "UserInputMapper.hpp"
 
@@ -17,10 +18,12 @@ namespace ormaniec
     IInputMapper& UserInputMapper::getKeyboardMapper() { return *keyboardMapper; }
     IInputMapper& UserInputMapper::getMouseMapper() { return *mouseMapper; }
     IInputMapper& UserInputMapper::getCloseMapper() { return *closeMapper; }
+    IInputMapper& UserInputMapper::getFocusMapper() { return *focusMapper;}
 
     UserInputMapper::UserInputMapper(WindowEventManager& windowEventManager)
         : closeMapper(new CloseInputMapper(windowEventManager)),
           keyboardMapper(new KeyboardInputMapper(windowEventManager)),
-          mouseMapper(new MouseInputMapper(windowEventManager)) { }
+          mouseMapper(new MouseInputMapper(windowEventManager)),
+          focusMapper(new carlos::FocusInputMapper(windowEventManager)) { }
 
 }

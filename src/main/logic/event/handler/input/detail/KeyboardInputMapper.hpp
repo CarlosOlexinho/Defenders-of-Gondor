@@ -8,7 +8,6 @@
 
 #include <logic/event/handler/input/IInputMapper.hpp>
 #include <memory>
-#include <window/event/handler/IEventHandler.hpp>
 #include <window/event/handler/WindowEventManager.hpp>
 
 namespace ormaniec
