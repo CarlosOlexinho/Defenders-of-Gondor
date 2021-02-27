@@ -18,9 +18,9 @@ namespace ormaniec
     {
     public:
         explicit MouseInputMapper(WindowEventManager& windowEventManager);
-        void registerMapping(unsigned int i, std::function<void()> function) override;
+        void registerMapping(unsigned int i, std::function<void(void*)> function) override;
 
     private:
-    std::map<sf::Mouse::Button, std::function<void()>> actionMap;
+    std::map<sf::Mouse::Button, std::function<void(void*)>> actionMap;
     };
 }

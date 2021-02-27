@@ -18,16 +18,20 @@ namespace ormaniec
         windowEventManager.subscribe(sf::Event::KeyReleased, [&](sf::Event& event) { handle(event); });
     }
 
-    void KeyboardInputMapper::registerMapping(unsigned int keyCode, std::function<void()> func)
+    void KeyboardInputMapper::registerMapping(unsigned int keyCode, std::function<void(void*)> func)
     {
         actionMap.insert({static_cast<sf::Keyboard::Key>(keyCode), func});
     }
+
     void KeyboardInputMapper::handle(sf::Event& event)
     {
         auto& keyCode = event.key.code;
-        if(actionMap.contains(keyCode))  //wykonujemy akcję dla danego przycisku
+        if(actionMap.contains(keyCode))
         {
-            actionMap[keyCode]();
+
+            bool result = event.type == sf::Event::KeyPressed;
+            actionMap[keyCode](&result);
+
         }
     }
 }

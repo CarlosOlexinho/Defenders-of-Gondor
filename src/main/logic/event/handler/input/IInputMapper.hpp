@@ -12,7 +12,7 @@ namespace ormaniec
 {
     struct IInputMapper
     {
-        virtual void registerMapping(unsigned, std::function<void()>) = 0;
+        virtual void registerMapping(unsigned, std::function<void(void*)>) = 0;
 
         ~IInputMapper() = default;
     };

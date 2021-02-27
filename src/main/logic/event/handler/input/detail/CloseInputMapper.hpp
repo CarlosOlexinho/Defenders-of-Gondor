@@ -18,13 +18,13 @@ namespace ormaniec
     {
     public:
         explicit CloseInputMapper(WindowEventManager& windowEventManager);
-        void registerMapping(unsigned int importance, std::function<void()> function) override;
+        void registerMapping(unsigned int importance, std::function<void(void*)> function) override;
 
     private:
         void handle();
 
     private:
-        std::map<unsigned, std::function<void()>, std::greater<> > actionMap;
+        std::map<unsigned, std::function<void(void*)>, std::greater<> > actionMap;
         sf::RenderWindow& targetWindow;
     };
 }

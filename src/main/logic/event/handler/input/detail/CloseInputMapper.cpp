@@ -16,7 +16,7 @@ namespace ormaniec
         windowEventManager.subscribe(sf::Event::Closed, [&](sf::Event& event){ handle(); });
     }
 
-    void CloseInputMapper::registerMapping(unsigned importance, std::function<void()> function)
+    void CloseInputMapper::registerMapping(unsigned importance, std::function<void(void*)> function)
     {
         actionMap.insert({importance, function});
     }
@@ -25,7 +25,7 @@ namespace ormaniec
         for( auto& actionMapping : actionMap )
         {
             std::cout << "importance: " << actionMapping.first << std::endl;
-            actionMapping.second();
+            actionMapping.second(nullptr);
         }
         targetWindow.close();
     }

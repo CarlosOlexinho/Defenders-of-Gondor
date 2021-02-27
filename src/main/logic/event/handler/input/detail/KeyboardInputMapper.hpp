@@ -17,13 +17,13 @@ namespace ormaniec
     {
     public:
         explicit KeyboardInputMapper(WindowEventManager& windowEventManager);
-        void registerMapping(unsigned int keyCode, std::function<void()> func) override;
+        void registerMapping(unsigned int keyCode, std::function<void(void*)> func) override;
 
     private:
         void handle(sf::Event& event);
 
     private:
-        std::map<sf::Keyboard::Key, std::function<void()>> actionMap;
+        std::map<sf::Keyboard::Key, std::function<void(void*)>> actionMap;
     };
 }
 
