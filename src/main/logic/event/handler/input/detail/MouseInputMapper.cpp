@@ -16,7 +16,8 @@ namespace ormaniec
     }
     MouseInputMapper::MouseInputMapper(WindowEventManager& windowEventManager)
     {
-        windowEventManager.subscribe(sf::Event::MouseButtonPressed, [&](sf::Event& event){
+        windowEventManager.subscribe(sf::Event::MouseButtonPressed, [&](sf::Event& event)
+        {
             auto& mouseButton = event.mouseButton.button;
         if(actionMap.contains(mouseButton))
         {

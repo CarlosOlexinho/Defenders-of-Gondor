@@ -6,6 +6,7 @@
  */
 
 #include "CloseInputMapper.hpp"
+#include <iostream>
 
 namespace ormaniec
 {
@@ -23,6 +24,7 @@ namespace ormaniec
     {
         for( auto& actionMapping : actionMap )
         {
+            std::cout << "importance: " << actionMapping.first << std::endl;
             actionMapping.second();
         }
         targetWindow.close();

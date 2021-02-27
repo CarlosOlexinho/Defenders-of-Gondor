@@ -6,6 +6,7 @@ namespace carlos
         : targetWindow(windowEventManager.getBoundWindow())
     {
         windowEventManager.subscribe(sf::Event::GainedFocus, [&](sf::Event& event){ handle( event ); });
+        windowEventManager.subscribe(sf::Event::LostFocus, [&](sf::Event& event){ handle( event ); });
     }
 
     void FocusInputMapper::registerMapping(unsigned importance, std::function<void()> function)
@@ -14,17 +15,10 @@ namespace carlos
     }
     void FocusInputMapper::handle(sf::Event& event)
     {
-        bool WINDOW_HAS_FOCUS = false;
-
-        if ( event.type == sf::Event::GainedFocus )
+        auto& importance = event.type;
+        if(actionMap.contains(importance))
         {
-            WINDOW_HAS_FOCUS = true;
-            
-        }
-
-        else if ( event.type == sf::Event::LostFocus )
-        {
-            WINDOW_HAS_FOCUS = false;
+            actionMap[event.type]();
         }
     }
 }

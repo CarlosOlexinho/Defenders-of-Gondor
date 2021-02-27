@@ -15,6 +15,7 @@ namespace ormaniec
     KeyboardInputMapper::KeyboardInputMapper(WindowEventManager& windowEventManager)
     {
         windowEventManager.subscribe(sf::Event::KeyPressed, [&](sf::Event& event) { handle(event); });
+        windowEventManager.subscribe(sf::Event::KeyReleased, [&](sf::Event& event) { handle(event); });
     }
 
     void KeyboardInputMapper::registerMapping(unsigned int keyCode, std::function<void()> func)
@@ -24,7 +25,7 @@ namespace ormaniec
     void KeyboardInputMapper::handle(sf::Event& event)
     {
         auto& keyCode = event.key.code;
-        if(actionMap.contains(keyCode))
+        if(actionMap.contains(keyCode))  //wykonujemy akcję dla danego przycisku
         {
             actionMap[keyCode]();
         }

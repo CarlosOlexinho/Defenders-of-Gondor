@@ -21,8 +21,6 @@ namespace ormaniec
         void registerMapping(unsigned int i, std::function<void()> function) override;
 
     private:
-        std::map<sf::Mouse::Button, std::function<void()>> actionMap;
+    std::map<sf::Mouse::Button, std::function<void()>> actionMap;
     };
 }
-
-

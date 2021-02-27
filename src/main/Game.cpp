@@ -19,22 +19,31 @@ namespace ormaniec
         windowEventManagerPtr = std::make_unique<WindowEventManager>(renderWindow);
         userInputMapperPtr = std::make_unique<UserInputMapper>(*windowEventManagerPtr);
 
-        userInputMapperPtr->getKeyboardMapper().registerMapping(sf::Keyboard::D, []{ std::cout << "You are pressing D." << std::endl; });
+        userInputMapperPtr->getKeyboardMapper().registerMapping(sf::Keyboard::D, []{ std::cout << "You are pressing D." << std::endl; }),
+
+            
         userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Right, []{ std::cout << "Yes, that's right. You've pressed right mouse button." << std::endl; });
         userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Middle, []{ std::cout << "Yes, that's right. You've pressed middle mouse button." << std::endl; });
         userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Left, []{ std::cout << "Yes, that's right. You've pressed left mouse button." << std::endl; });
         
-        userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::GainedFocus, [] {std::cout << "Gained focus!" << std:: endl; });
+        userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::GainedFocus, [] {std::cout << "Gained focus!" << std::endl; });
+        userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::LostFocus, [] {std::cout << "Lost focus!" << std::endl; });
+        
         
         userInputMapperPtr->getCloseMapper().registerMapping(0, []
         {
             std::cout << "Thank you very much for using our application!" << std::endl;
-            std::this_thread::sleep_for(std::chrono::seconds(5));
+            std::this_thread::sleep_for(std::chrono::seconds(1));
         });
         userInputMapperPtr->getCloseMapper().registerMapping(1, []
         {
             std::cout << "Closing..." << std::endl;
         });
+
+        // userInputMapperPtr->getKeyboardMapper().registerMapping(sf::Keyboard::Q, [&]{
+        //     Clicker::handleKeyboardClick();
+        // });
+
     }
 
     void Game::start()

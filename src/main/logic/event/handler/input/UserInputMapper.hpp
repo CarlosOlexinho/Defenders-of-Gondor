@@ -21,9 +21,9 @@ namespace ormaniec
         IInputMapper& getFocusMapper();
     
 
-        explicit UserInputMapper(WindowEventManager& windowEventManager);
+        UserInputMapper(WindowEventManager& windowEventManager);
     private:
-        std::unique_ptr<IInputMapper> closeMapper;
+        std::unique_ptr<IInputMapper> closeMapper; //pointer point at place in scope for IInputMapper and it's called closeMapper.
         std::unique_ptr<IInputMapper> keyboardMapper;
         std::unique_ptr<IInputMapper> mouseMapper;
         std::unique_ptr<IInputMapper> focusMapper;
