@@ -18,7 +18,7 @@ namespace ormaniec
     IInputMapper& UserInputMapper::getKeyboardMapper() { return *keyboardMapper; }
     IInputMapper& UserInputMapper::getMouseMapper() { return *mouseMapper; }
     IInputMapper& UserInputMapper::getCloseMapper() { return *closeMapper; }
-    IInputMapper& UserInputMapper::getFocusMapper() { return *focusMapper;}
+    IInputMapper& UserInputMapper::getFocusMapper() { return *focusMapper; }
 
     UserInputMapper::UserInputMapper(WindowEventManager& windowEventManager)
         : closeMapper(new CloseInputMapper(windowEventManager)),

@@ -54,6 +54,9 @@ namespace ormaniec
             gameLoop();
         }
     }
+
+    void Clicker();
+
     void Game::gameLoop()
     {
         sf::Event event;
@@ -61,9 +64,7 @@ namespace ormaniec
         {
             windowEventManagerPtr->receive(event);
         }
-
         renderWindow.clear();
         renderWindow.display();
     }
-
-}
+}  

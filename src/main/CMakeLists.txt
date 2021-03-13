@@ -9,7 +9,7 @@ add_executable( RTS
     logic/event/handler/input/detail/CloseInputMapper.cpp
     logic/event/handler/input/detail/FocusInputMapper.cpp
 
-#    // clickerthegame/Clicker.cpp
+    clickerthegame/Clicker.cpp
     )
 
 target_include_directories( RTS PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} )

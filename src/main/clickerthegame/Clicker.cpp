@@ -1,43 +1,73 @@
 #include "Clicker.hpp"
 
-#include <utility>
 #include <iostream>
 
 namespace carlos
 {
-
-    void Clicker::registerMapping(unsigned int i, std::function<void()> function,
-                unsigned int keyCode, std::function<void()> func)
+// std::shared_ptr<ormaniec::UserInputMapper> userInputMapperPtr
+    Clicker::Clicker ()
     {
-        actionMap.insert({  });
-        
+        userInputMapperPtr -> getKeyboardMapper().registerMapping(sf::Keyboard::Q, [&] { handleKeyboardClick(); });
+        userInputMapperPtr -> getKeyboardMapper().registerMapping(sf::Keyboard::E, [&] { handleKeyboardClick(); });
+
+        userInputMapperPtr -> getMouseMapper().registerMapping(sf::Mouse::Left, [&] { handleMouseClick(); });
+        userInputMapperPtr -> getMouseMapper().registerMapping(sf::Mouse::Right, [&] { handleMouseClick(); });
+
+        userInputMapperPtr -> getCloseMapper().registerMapping(9999, [&]{ handleEnd(); });
     }
 
-    Clicker::Clicker(ormaniec::WindowEventManager& windowEventManager)
+void Clicker::handleMouseClick()
     {
-        windowEventManager.subscribe(sf::Event::KeyPressed, [&] (sf::Event& event) { handle(event); });
-        windowEventManager.subscribe(sf::Event::MouseButtonPressed, [&] (sf::Event& event) { handle(event); });
+         if(++mouseClick == target)
+        {
+            std::cout << "Mouse won!" << std::endl;
+        }
     }    
 
-    void handleKeyboardClick()
+void Clicker::handleKeyboardClick()
     {
-        auto& keyCode = event.key.code;
-        if(actionMap.contains(keyCode))
+        if(++keyboardClick == target)
         {
-            actionMap[keyCode]();
+            std::cout << "Keyboard won!" << std::endl;
         }
     }
-    
-    void handleMouseClick(sf::Event& event)
-    {
-         auto& mouseButton = event.mouseButton.button;
-            if(actionMap.contains(mouseButton))
-            {
-                actionMap[mouseButton]();
-            }
-    }
 
+void Clicker::handleDraw()
+{
+
+     if(++mouseClick == target && ++keyboardClick == target)
+        {
+            std::cout << "It's draw!" << std::endl;
+        }
+
+}    
+
+void Clicker::handleEnd()
+    {
+        std::cout << "Results: " << std::endl;
+        std::cout << "Mouse clicks: " << mouseClick << std::endl;
+        std::cout << "Keyboard clicks: " << keyboardClick << std::endl;
+    }
 }
+//     void handleKeyboardClick()
+//     {
+//         auto& keyCode = event.key.code;
+//         if(actionMap.contains(keyCode))
+//         {
+//             actionMap[keyCode]();
+//         }
+//     }
+    
+//     void handleMouseClick(sf::Event& event)
+//     {
+//          auto& mouseButton = event.mouseButton.button;
+//             if(actionMap.contains(mouseButton))
+//             {
+//                 actionMap[mouseButton]();
+//             }
+//     }
+
+// }
 
 
 

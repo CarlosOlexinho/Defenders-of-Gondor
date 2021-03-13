@@ -1,31 +1,28 @@
 #pragma once
 
-#include <logic/event/handler/input/IInputMapper.hpp>
-#include <memory>
-#include <window/event/handler/WindowEventManager.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <logic/event/handler/input/UserInputMapper.hpp>
+
 
 namespace carlos
 {
     class Clicker
     {
         public:
-            explicit Clicker(ormaniec::WindowEventManager& windowEventManager);
-            void registerMapping(
-                unsigned int i, std::function<void()> function,
-                unsigned int keyCode, std::function<void()> func);
+            Clicker();
+            void setTargetCondition (unsigned count);
     
         private:
-            
-            void handle(sf::Event& event);
+            unsigned target = 20;
+            unsigned mouseClick = 0;
+            unsigned keyboardClick = 0;
 
-        private:
-            std::map<sf::Mouse::Button, sf::Keyboard::Key, std::function<void()>> actionMap;
+            std::shared_ptr<ormaniec::UserInputMapper> userInputMapperPtr;
 
-        public:
-           void handleMouseClick(sf::Event& event);
+        protected:
+           void handleMouseClick();
            void handleKeyboardClick();
-           void handleWiner(); 
+           void handleDraw();
+           void handleEnd(); 
     };
     
 }
