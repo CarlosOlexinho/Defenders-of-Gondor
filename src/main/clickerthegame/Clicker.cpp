@@ -5,7 +5,7 @@
 namespace carlos
 {
 // std::shared_ptr<ormaniec::UserInputMapper> userInputMapperPtr
-    Clicker::Clicker ()
+    Clicker::Clicker (std::unique_ptr<ormaniec::UserInputMapper>& userInputMapperPtr)
     {
         userInputMapperPtr -> getKeyboardMapper().registerMapping(sf::Keyboard::Q, [&] { handleKeyboardClick(); });
         userInputMapperPtr -> getKeyboardMapper().registerMapping(sf::Keyboard::E, [&] { handleKeyboardClick(); });
@@ -35,7 +35,7 @@ void Clicker::handleKeyboardClick()
 void Clicker::handleDraw()
 {
 
-     if(++mouseClick == target && ++keyboardClick == target)
+     if(mouseClick == target && keyboardClick == target)
         {
             std::cout << "It's draw!" << std::endl;
         }

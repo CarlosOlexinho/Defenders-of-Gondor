@@ -23,7 +23,7 @@ namespace ormaniec
         void handle(sf::Event& event);
 
     private:
-        std::map<sf::Keyboard::Key, std::function<void()>> actionMap;
+        std::map<sf::Keyboard::Key, std::vector<std::function<void()>>> actionMap;
     };
 }
 

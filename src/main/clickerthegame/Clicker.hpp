@@ -8,15 +8,13 @@ namespace carlos
     class Clicker
     {
         public:
-            Clicker();
+            Clicker(std::unique_ptr<ormaniec::UserInputMapper>& userInputMapperPtr);
             void setTargetCondition (unsigned count);
     
         private:
             unsigned target = 20;
             unsigned mouseClick = 0;
             unsigned keyboardClick = 0;
-
-            std::shared_ptr<ormaniec::UserInputMapper> userInputMapperPtr;
 
         protected:
            void handleMouseClick();

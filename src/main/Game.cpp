@@ -1,9 +1,11 @@
 //
+//
 // Created by ormaniec on 08.01.2021.
 //
 /**
  * @file Game.cpp
  */
+
 
 #include <thread>
 #include <iostream>
@@ -22,9 +24,9 @@ namespace ormaniec
         userInputMapperPtr->getKeyboardMapper().registerMapping(sf::Keyboard::D, []{ std::cout << "You are pressing D." << std::endl; }),
 
             
-        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Right, []{ std::cout << "Yes, that's right. You've pressed right mouse button." << std::endl; });
-        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Middle, []{ std::cout << "Yes, that's right. You've pressed middle mouse button." << std::endl; });
-        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Left, []{ std::cout << "Yes, that's right. You've pressed left mouse button." << std::endl; });
+        // userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Right, []{ std::cout << "Yes, that's right. You've pressed right mouse button." << std::endl; });
+        // userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Middle, []{ std::cout << "Yes, that's right. You've pressed middle mouse button." << std::endl; });
+        // userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Left, []{ std::cout << "Yes, that's right. You've pressed left mouse button." << std::endl; });
         
         userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::GainedFocus, [] {std::cout << "Gained focus!" << std::endl; });
         userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::LostFocus, [] {std::cout << "Lost focus!" << std::endl; });
@@ -40,9 +42,7 @@ namespace ormaniec
             std::cout << "Closing..." << std::endl;
         });
 
-        // userInputMapperPtr->getKeyboardMapper().registerMapping(sf::Keyboard::Q, [&]{
-        //     Clicker::handleKeyboardClick();
-        // });
+        clickerPtr = std::make_unique<carlos::Clicker> (userInputMapperPtr);
 
     }
 
@@ -54,8 +54,6 @@ namespace ormaniec
             gameLoop();
         }
     }
-
-    void Clicker();
 
     void Game::gameLoop()
     {

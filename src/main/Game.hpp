@@ -7,6 +7,7 @@
 #pragma once
 
 #include "window/event/handler/WindowEventManager.hpp"
+#include "clickerthegame/Clicker.hpp"
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
@@ -26,8 +27,10 @@ namespace ormaniec
 
     private:
         sf::RenderWindow                    renderWindow;
+        std::unique_ptr<carlos::Clicker>    clickerPtr;
         std::unique_ptr<UserInputMapper>    userInputMapperPtr;
         std::unique_ptr<WindowEventManager> windowEventManagerPtr;
+
     };
 }
 
