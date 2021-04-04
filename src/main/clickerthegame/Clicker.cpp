@@ -18,7 +18,7 @@ namespace carlos
 
 void Clicker::handleMouseClick()
     {
-         if(++mouseClick == target)
+         if(++mouseClick == target && mouseClick != keyboardClick)
         {
             std::cout << "Mouse won!" << std::endl;
         }
@@ -26,21 +26,11 @@ void Clicker::handleMouseClick()
 
 void Clicker::handleKeyboardClick()
     {
-        if(++keyboardClick == target)
+        if(++keyboardClick == target && keyboardClick != mouseClick)
         {
             std::cout << "Keyboard won!" << std::endl;
         }
     }
-
-void Clicker::handleDraw()
-{
-
-     if(mouseClick == target && keyboardClick == target)
-        {
-            std::cout << "It's draw!" << std::endl;
-        }
-
-}    
 
 void Clicker::handleEnd()
     {

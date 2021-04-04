@@ -17,7 +17,7 @@ namespace ormaniec
     {
     public:
         explicit KeyboardInputMapper(WindowEventManager& windowEventManager);
-        void registerMapping(unsigned int keyCode, std::function<void()> func) override;
+        void registerMapping(unsigned int, std::function<void()> ) override;
 
     private:
         void handle(sf::Event& event);

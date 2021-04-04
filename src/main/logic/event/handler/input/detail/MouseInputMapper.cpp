@@ -13,16 +13,15 @@ namespace ormaniec
 {
     void MouseInputMapper::registerMapping(unsigned int i, std::function<void()> function)
     {
-        if (not actionMap.contains(i))
+        if (not actionMap.contains(static_cast<const sf::Mouse::Button>(i)))
         {
-            actionMap.insert({static_cast<sf::Mouse::Button> {function}});
+            actionMap.insert({static_cast<sf::Mouse::Button>(i), {function}});
         }
 
         else
         {
-            actionMap[i].push_back(function);
+            actionMap[static_cast<const sf::Mouse::Button>(i)].push_back(function);
         }
-        return;
     }
     MouseInputMapper::MouseInputMapper(WindowEventManager& windowEventManager)
     {

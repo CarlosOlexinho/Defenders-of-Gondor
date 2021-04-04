@@ -19,8 +19,7 @@ namespace carlos
         protected:
            void handleMouseClick();
            void handleKeyboardClick();
-           void handleDraw();
-           void handleEnd(); 
+           void handleEnd();
     };
     
 }
