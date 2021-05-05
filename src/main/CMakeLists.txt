@@ -8,8 +8,6 @@ add_executable( RTS
     logic/event/handler/input/detail/MouseInputMapper.cpp
     logic/event/handler/input/detail/CloseInputMapper.cpp
     logic/event/handler/input/detail/FocusInputMapper.cpp
-
-    clickerthegame/Clicker.cpp
     logic/event/handler/input/detail/ResizeInputMapper.cpp
 
     )

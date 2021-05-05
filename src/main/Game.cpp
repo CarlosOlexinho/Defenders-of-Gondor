@@ -41,9 +41,6 @@ namespace ormaniec
         {
             std::cout << "Closing..." << std::endl;
         });
-
-        clickerPtr = std::make_unique<carlos::Clicker> (userInputMapperPtr);
-
     }
 
     void Game::start()
