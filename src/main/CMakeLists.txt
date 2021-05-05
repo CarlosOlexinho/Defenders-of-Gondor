@@ -10,7 +10,9 @@ add_executable( RTS
     logic/event/handler/input/detail/FocusInputMapper.cpp
 
     clickerthegame/Clicker.cpp
-    )
+    logic/event/handler/input/detail/ResizeInputMapper.cpp
+
+        )
 
 target_include_directories( RTS PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} )
 target_link_libraries( RTS sfml-graphics sfml-audio pthread )

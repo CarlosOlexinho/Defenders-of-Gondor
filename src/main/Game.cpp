@@ -10,8 +10,10 @@
 #include <thread>
 #include <iostream>
 
+#include <SFML/Graphics.hpp>
 
 #include "Game.hpp"
+
 
 namespace ormaniec
 {
@@ -24,13 +26,17 @@ namespace ormaniec
         userInputMapperPtr->getKeyboardMapper().registerMapping(sf::Keyboard::D, []{ std::cout << "You are pressing D." << std::endl; }),
 
             
-         userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Right, []{ std::cout << "Yes, that's right. You've pressed right mouse button." << std::endl; });
-         userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Middle, []{ std::cout << "Yes, that's right. You've pressed middle mouse button." << std::endl; });
-         userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Left, []{ std::cout << "Yes, that's right. You've pressed left mouse button." << std::endl; });
+        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Right, []{ std::cout << "Yes, that's right. You've pressed right mouse button." << std::endl; });
+        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Middle, []{ std::cout << "Yes, that's right. You've pressed middle mouse button." << std::endl; });
+        userInputMapperPtr->getMouseMapper().registerMapping(sf::Mouse::Left, []{ std::cout << "Yes, that's right. You've pressed left mouse button." << std::endl; });
         
         userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::GainedFocus, [] {std::cout << "Gained focus!" << std::endl; });
         userInputMapperPtr->getFocusMapper().registerMapping(sf::Event::LostFocus, [] {std::cout << "Lost focus!" << std::endl; });
-        
+
+//        userInputMapperPtr->getResizeMapper().registerMapping(sf::Event::Resized, []
+//        {
+//            std::cout << "And now, window can be resized!" << std::endl;
+//        });
         
         userInputMapperPtr->getCloseMapper().registerMapping(0, []
         {
@@ -57,62 +63,23 @@ namespace ormaniec
 
     void Game::gameLoop()
     {
-        sf::Event           event;
-        static bool         pressed = false;
-        static sf::Vector2f start   = {-1, -1};
-        static sf::Vector2f end     = {-1, -1};
-        sf::RectangleShape  rect;
+        sf::Sprite background;
+        sf::Texture texture;
+        sf::Event event;
 
         while(renderWindow.pollEvent(event))
         {
             windowEventManagerPtr->receive(event);
 
-            if( event.type == sf::Event::Resized)
+            if (event.type == sf::Event::Resized)
             {
-                sf::Vector2f size = static_cast<sf::Vector2f>(renderWindow.getSize());
-                auto GUIView = sf::View(sf::FloatRect(0.f, 0.f, size.x, size.y));
-                renderWindow.setView(GUIView);
+                std::cout << "new width: " << event.size.width << std::endl;
+                std::cout << "new height: " << event.size.height << std::endl;
             }
+        }
 
-            if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Button::Left)
-            {
-                pressed = true;
-                if(start == sf::Vector2f{-1, -1})
-                {
-                    start = sf::Vector2f(sf::Mouse::getPosition(renderWindow));
-                }
-            }
-            else if(event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Button::Left)
-            {
-                pressed = false;
-                start   = {-1, -1};
-            }
-        }
-        if(pressed)
-        {
-            sf::Mouse::getPosition();
-            end = sf::Vector2f(sf::Mouse::getPosition(renderWindow));
-        }
         renderWindow.clear();
-
-        if(start != sf::Vector2f{-1, -1} && end != sf::Vector2f{-1, -1})
-        {
-            rect.setPosition(start);
-            rect.setOutlineThickness(1);
-            rect.setOutlineColor(sf::Color::Green);
-            rect.setFillColor(sf::Color::Transparent);
-
-            std::cout << "[" << start.x << "," << start.y << "] " << end.x - start.x << " : "
-                      << end.y - start.y << std::endl;
-
-            rect.setSize(
-                {
-                    end.x - start.x,
-                    end.y - start.y
-                });
-            renderWindow.draw(rect);
-        }
-
+        renderWindow.draw(background);
         renderWindow.display();
     }
 }  

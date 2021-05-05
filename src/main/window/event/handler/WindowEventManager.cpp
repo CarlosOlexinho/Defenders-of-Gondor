@@ -19,7 +19,6 @@ namespace ormaniec
         {
             eventSubscriberMap[type].push_back(action);
         }
-        return;
     }
 
     bool WindowEventManager::receive(sf::Event& event)
