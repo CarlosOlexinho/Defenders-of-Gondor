@@ -1,135 +1,64 @@
 #include <iostream>
 
-struct IMovable
+struct IAttack
 {
-    virtual void move(std::int64_t x, std::int64_t y) = 0;
+    virtual void attack() = 0;
 };
 
-class Food;
-struct IConsumer
+struct Human
+    : IAttack
 {
-    virtual void consume(Food*) = 0;
+    void attack() override { std::cout << "Spear goes brrr" << std::endl; }
 };
 
-struct Food
+struct Dragon
+    : IAttack
 {
-    virtual ~Food() = default;
-    std::string name;
-
-    std::uint64_t calories = 0;
-    std::uint64_t vitaminC = 0;
-    std::uint64_t vitaminD = 0;
-    std::uint64_t vitaminE = 0;
-    std::uint64_t vitaminA = 0;
-    std::uint64_t vitaminB = 0;
+    void attack() override { std::cout << "Fire goes brrr" << std::endl; }
 };
 
-struct Cyanide
-    : Food
+struct Bear
+    : IAttack
 {
-    std::uint64_t amount = 0;
+    void attack() override { std::cout << "Claw goes brrr" << std::endl; }
 };
 
-struct HealthPotion
-    : Food
+struct FrostWyvern
+    : IAttack
 {
-    std::uint64_t healPower = 0;
+    void attack() override { std::cout << "Ice goes brrr" << std::endl; }
 };
 
-class Animal
-    : public IMovable, public IConsumer
+struct Polymorph
+    : IAttack
 {
-public:
-    void move(std::int64_t x, std::int64_t y) override
+    void attack() override
     {
-        m_position = {x, y};
-    }
-    void consume(Food* food) override
-    {
-        Cyanide* cyanide = dynamic_cast<Cyanide*>(food);
-        if( cyanide )
+        if( form )
         {
-            if( cyanide->amount / mass > 0.1f)
-                health = 0;
+            form->attack();
         }
-
-        HealthPotion* healthPotion = dynamic_cast<HealthPotion*>(food);
-        if( healthPotion )
+        else
         {
-            health = 100;
+            std::cout << "I have no form, I am defenseless!" << std::endl;
         }
     }
+    void changeForm( IAttack* attack ) { form = attack; }
 
-public:
-    std::int64_t health = 100;
-    std::uint64_t mass = 0;
-    std::pair<std::int64_t, std::int64_t> m_position{0,0};
-};
-
-class Dog
-    : public Animal
-{
-public:
-    Dog() { mass = 20; }
-};
-class Cat
-    : public Animal
-{
-public:
-    Cat() { mass = 6; }
-};
-class Human
-    : public Animal
-{
-public:
-    Human() { mass = 80; }
-public:
-    void consume(Food* food) override
-    {
-        HealthPotion* healthPotion = dynamic_cast<HealthPotion*>(food);
-        if( healthPotion )
-        {
-            health = healthPotion->healPower;
-        }
-    }
-};
-class Cow
-    : public Animal
-{
-public:
-    Cow() { mass = 200; }
-};
-class Falcon
-    : public Animal
-{
-public:
-    Falcon() { mass = 10; }
+private:
+    IAttack* form = nullptr;
 };
 
 int main()
 {
-    HealthPotion healthPotion;
-    healthPotion.healPower = 40;
+    Polymorph polymorph;
+    polymorph.attack();
 
-    Dog dog_1;
-    dog_1.health = 40;
-    Cat cat_1;
-    cat_1.health = 50;
-    Cow cow_1;
-    cow_1.health = 70;
+    Dragon dragon;
+    polymorph.changeForm(&dragon);
 
-    Human human;
-    human.health = 10;
+    polymorph.attack();
 
-    std::cout << "Health of creatures: " << dog_1.health << cat_1.health << cow_1.health << human.health << std::endl;
-
-    dog_1.consume(&healthPotion);
-    cat_1.consume(&healthPotion);
-    cow_1.consume(&healthPotion);
-
-    human.consume(&healthPotion);
-
-    std::cout << "Health of creatures: " << dog_1.health << cat_1.health << cow_1.health << human.health << std::endl;
 
     return EXIT_SUCCESS;
 }
