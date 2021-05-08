@@ -1,64 +1,58 @@
 #include <iostream>
+#include <vector>
 
-struct IAttack
+struct IMovable
 {
-    virtual void attack() = 0;
+    virtual void move(int x, int y) = 0;
 };
 
-struct Human
-    : IAttack
+struct IRefuable
 {
-    void attack() override { std::cout << "Spear goes brrr" << std::endl; }
+    virtual void fillUpFuel (unsigned ) = 0;
 };
 
-struct Dragon
-    : IAttack
+struct IBioFuelRefuable
+    : IRefuable
 {
-    void attack() override { std::cout << "Fire goes brrr" << std::endl; }
+
 };
 
-struct Bear
-    : IAttack
+struct IBurnFuelRefuable
+    : IRefuable
 {
-    void attack() override { std::cout << "Claw goes brrr" << std::endl; }
+
 };
 
-struct FrostWyvern
-    : IAttack
+struct Car
+    : IMovable
+    , IBurnFuelRefuable
+    , IBioFuelRefuable
 {
-    void attack() override { std::cout << "Ice goes brrr" << std::endl; }
+    void move(int x, int y) override { }
+    void fillUpFuel(unsigned amount) override { }
 };
 
-struct Polymorph
-    : IAttack
+struct Dog
+    : IMovable
+    , IBioFuelRefuable
 {
-    void attack() override
-    {
-        if( form )
-        {
-            form->attack();
-        }
-        else
-        {
-            std::cout << "I have no form, I am defenseless!" << std::endl;
-        }
-    }
-    void changeForm( IAttack* attack ) { form = attack; }
-
-private:
-    IAttack* form = nullptr;
+    void move(int x, int y) override { }
+    void fillUpFuel(unsigned amount) override { }
+    void jump() { }
 };
 
 int main()
 {
-    Polymorph polymorph;
-    polymorph.attack();
+    std::vector<IMovable*> objects{ };
+    std::vector<IBioFuelRefuable*> refuableObjects{ };
 
-    Dragon dragon;
-    polymorph.changeForm(&dragon);
+    objects.emplace_back(new Car{ });
+    objects.emplace_back(new Dog{ });
 
-    polymorph.attack();
-
+    for(auto* object : objects)
+    {
+        object->move(0,0);
+    }
 
     return EXIT_SUCCESS;
 }
